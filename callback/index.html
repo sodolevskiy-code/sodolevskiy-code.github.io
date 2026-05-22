@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>TikTok Connected</title>
+<style>
+  body { font-family: sans-serif; max-width: 600px; margin: 60px auto; padding: 0 20px; text-align: center; }
+  .code-box { background: #f0f0f0; border: 2px solid #333; border-radius: 8px; padding: 20px; margin: 20px 0; font-size: 18px; font-weight: bold; word-break: break-all; }
+  .instruction { color: #555; font-size: 14px; }
+</style>
+</head>
+<body>
+<h2>✅ TikTok Authorization Complete</h2>
+<p class="instruction">Copy the code below and send it to Jarvis on Telegram:</p>
+<div class="code-box" id="code">Loading...</div>
+<p class="instruction">Send this to Jarvis: <strong>/tiktok_code [paste code here]</strong></p>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get('code');
+  const error = params.get('error');
+  if (code) {
+    document.getElementById('code').textContent = code;
+  } else if (error) {
+    document.getElementById('code').textContent = 'Error: ' + error;
+    document.querySelector('h2').textContent = '❌ Authorization Failed';
+  } else {
+    document.getElementById('code').textContent = 'No code found in URL';
+  }
+</script>
+</body>
+</html>
